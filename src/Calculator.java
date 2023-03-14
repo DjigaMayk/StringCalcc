@@ -25,9 +25,7 @@ public class Calculator {
         } else {
             throw new Exception("Некорректный знак действия");
         }
-        if(data[0].length()>10 || data[1].length()>10 ){
-            throw new Exception("Символов должно быть не больше 10");
-        }
+
 
         if (action == '*' || action == '/') {
             if (data[1].contains("\"")) throw new Exception("Строчку можно делить или умножать только на число");
@@ -35,13 +33,16 @@ public class Calculator {
                 throw new Exception("Цифры могут быть от 0 до 10");
             }
         }
+        if(parsable(data[0])){
+            throw new Exception("Неверные данные");
+
+        }
 
         for (int i = 0; i < data.length; i++) {
             data[i] = data[i].replace("\"", "");
         }
-        if(parsable(data[0])){
-            throw new Exception("Неверные данные");
-
+        if(data[0].length()>10 || data[1].length()>10 ){
+            throw new Exception("Символов должно быть не больше 10");
         }
 
 
